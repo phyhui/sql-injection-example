@@ -1,10 +1,10 @@
 <?php
 // (A) DATABASE SETTINGS - CHANGE TO YOUR OWN!
-define("DB_HOST", "localhost");
-define("DB_NAME", "test");
+define("DB_HOST", "db");
+define("DB_NAME", "my_database");
 define("DB_CHARSET", "utf8mb4");
 define("DB_USER", "root");
-define("DB_PASSWORD", "");
+define("DB_PASSWORD", "my_root_password");
  
 // (B) CONNECT TO DATABASE
 $pdo = new PDO(

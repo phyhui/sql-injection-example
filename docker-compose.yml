@@ -3,6 +3,7 @@ version: '3.8'
 services:
   db:
     image: mysql:8.0
+    container_name: db
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
@@ -12,3 +13,23 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
+    networks:
+      - sql-injection-example_my-network
+    volumes:
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+
+  php-container:
+    build:
+      context: .
+    image: sql-injection-web
+    container_name: php-container
+    depends_on:
+    - db
+    ports:
+    - "8080:80"
+    networks:
+    - sql-injection-example_my-network
+
+networks:
+  sql-injection-example_my-network:
+    external: true

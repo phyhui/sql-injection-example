@@ -1,5 +1,6 @@
--- (A) PRODUCTS TABLE
-CREATE TABLE `products` (
+USE `my_database`
+
+CREATE TABLE IF NOT EXISTS `products` (
   `id` bigint(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1
@@ -12,7 +13,6 @@ ALTER TABLE `products`
 ALTER TABLE `products`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
--- (B) DUMMY DATA
 INSERT INTO `products` (`id`, `name`, `status`) VALUES
 (1, 'Apple', 1),
 (2, 'Beet', 1),
